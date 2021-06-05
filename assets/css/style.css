@@ -1,10 +1,41 @@
 body {
     background-color: rgb(216, 247, 247);
-    background-image: url("../images/mountain landscape.jpg");
-    width: fit-content;
-    height:max-content;
 }
 
 header {  
-    
+    padding: 20px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-image: url("../images/mountain landscape.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 100%;
+}
+
+header h1{
+    color: tomato;
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+header nav {
+    display: flex;
+}
+
+header nav ul {
+    padding: 20px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    color:tomato;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+header nav ul li a {
+    padding: 10px 15px;
 }
