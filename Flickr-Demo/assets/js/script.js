@@ -13,7 +13,15 @@ fetch(
 		var flickrSecret = data.photos.photo[0].secret;
 
 		// Flickr image URL https://live.staticflickr.com/{server-id}/{id}_{secret}_{size-suffix}.jpg
-		var url = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
-		console.log(url);
+		var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
+		console.log(imageUrl);
 
+		var responseContainerEl = document.querySelector("#image");
+
+		responseContainerEl.innerHTML = '';
+
+		var flickrImg = document.createElement('img');
+		flickrImg.setAttribute('src', imageUrl);
+
+		responseContainerEl.appendChild(flickrImg);
 	});
