@@ -1,263 +1,327 @@
+// Trail Finders
+// https://github.com/anthonypena97/01-project
+
+// Trails API: https://rapidapi.com/trailapi/api/trailapi
+// Flickr API: https://www.flickr.com/services/api/
+
+// hiking trail search by user longitude and latitude location
+// get location
 function locationSearch() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
-    else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    };
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+	}
+	else {
+		x.innerHTML = "Geolocation is not supported by this browser.";
+	};
 
-    var x = document.getElementById("demo");
+	var x = document.getElementById("demo");
 
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    };
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+		} else {
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		}
+	};
 
-    function showPosition(position) {
-        var latData = position.coords.latitude;
-        var lonData = position.coords.longitude;
-        x.innerHTML = "Latitude: " + latData +
-            "<br>Longitude: " + lonData;
+	// display coordinates
+	function showPosition(position) {
+		var latData = position.coords.latitude;
+		var lonData = position.coords.longitude;
+		x.innerHTML = "Latitude: " + latData +
+			"<br>Longitude: " + lonData;
 
-        fetch("https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&radius=25"
-            + "&lon=" + lonData
-            + "&lat=" + latData, {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-key": "8d516f5377msh83238b25d8f111fp1c55fejsnd6aa548c8ae2",
-                "x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com"
-            }
-        })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data);
-                console.log(data.places[0].city + " - " + data.places[0].name);
+		// searching for hiking trails using 'trails api' using coordinates
+		fetch("https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&radius=25"
+			+ "&lon=" + lonData
+			+ "&lat=" + latData, {
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-key": "8d516f5377msh83238b25d8f111fp1c55fejsnd6aa548c8ae2",
+				"x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com"
+			}
+		})
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (data) {
+				console.log(data);
+				console.log(data.places[0].city + " - " + data.places[0].name);
 
-                var stateRaw = data.places[0].state;
-                var stateData = stateRaw.toLowerCase()
-                console.log(stateData);
+				// storing state information
 
-                var locationName = document.getElementById("locationName");
-                locationName.innerHTML = stateRaw
+				var stateRaw = data.places[0].state;
+				var stateData = stateRaw.toLowerCase()
+				console.log(stateData);
 
-                var randomSearch = Math.floor(Math.random() * 100)
-                console.log(randomSearch)
+				var locationName = document.getElementById("locationName");
+				locationName.innerHTML = stateRaw
 
-                var trailOne = data.places[0].city + " - " + data.places[0].name;
-                var responseContainerEl = document.querySelector('#result-one');
-                responseContainerEl.innerHTML = trailOne;
+				// displaying first five trails returned
 
-                var trailTwo = data.places[1].city + " - " + data.places[1].name;
-                var responseContainerEl = document.querySelector('#result-two');
-                responseContainerEl.innerHTML = trailTwo;
+				var trailOne = data.places[0].city + " - " + data.places[0].name;
+				var responseContainerEl = document.querySelector('#result-one');
+				responseContainerEl.innerHTML = trailOne;
 
-                var trailThree = data.places[2].city + " - " + data.places[2].name;
-                var responseContainerEl = document.querySelector('#result-three');
-                responseContainerEl.innerHTML = trailThree;
+				var trailTwo = data.places[1].city + " - " + data.places[1].name;
+				var responseContainerEl = document.querySelector('#result-two');
+				responseContainerEl.innerHTML = trailTwo;
 
-                var trailFour = data.places[3].city + " - " + data.places[3].name;
-                var responseContainerEl = document.querySelector('#result-four');
-                responseContainerEl.innerHTML = trailFour;
+				var trailThree = data.places[2].city + " - " + data.places[2].name;
+				var responseContainerEl = document.querySelector('#result-three');
+				responseContainerEl.innerHTML = trailThree;
 
-                var trailFive = data.places[4].city + " - " + data.places[4].name;
-                var responseContainerEl = document.querySelector('#result-five');
-                responseContainerEl.innerHTML = trailFive;
+				var trailFour = data.places[3].city + " - " + data.places[3].name;
+				var responseContainerEl = document.querySelector('#result-four');
+				responseContainerEl.innerHTML = trailFour;
 
-                fetch(
-                    "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=eba4d59c3d1445ea6dcd1a28e8cca79f" +
-                    "&tags=" + stateData + "outdoors" + "&format=json&nojsoncallback=1"
-                )
-                    .then(function (response) {
-                        return response.json();
-                    })
-                    .then(function (data) {
-                        console.log(data);
-                        console.log(data.photos.photo[randomSearch].id);
+				var trailFive = data.places[4].city + " - " + data.places[4].name;
+				var responseContainerEl = document.querySelector('#result-five');
+				responseContainerEl.innerHTML = trailFive;
 
-                        var flickrServer = data.photos.photo[randomSearch].server;
-                        var flickrId = data.photos.photo[randomSearch].id;
-                        var flickrSecret = data.photos.photo[randomSearch].secret;
+				// searching for image with flickr api using stored location data 
 
-                        // Flickr image URL https://live.staticflickr.com/{server-id}/{id}_{secret}_{size-suffix}.jpg
-                        var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
-                        console.log(imageUrl);
+				fetch(
+					"https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=eba4d59c3d1445ea6dcd1a28e8cca79f" +
+					"&tags=" + stateData + "outdoors" + "&format=json&nojsoncallback=1"
+				)
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (data) {
+						console.log(data);
 
-                        var responseContainerEl = document.querySelector("#image");
+						// declaring variable for randomizing photo selection
 
-                        responseContainerEl.innerHTML = '';
+						var randomSearch = Math.floor(Math.random() * 100)
+						console.log(randomSearch)
 
-                        var flickrImg = document.createElement('img');
-                        flickrImg.setAttribute('src', imageUrl);
+						console.log(data.photos.photo[randomSearch].id);
 
-                        responseContainerEl.appendChild(flickrImg);
-                    });
+						// flickr json response storage
 
-            })
-    };
+						var flickrServer = data.photos.photo[randomSearch].server;
+						var flickrId = data.photos.photo[randomSearch].id;
+						var flickrSecret = data.photos.photo[randomSearch].secret;
+
+						// flickr image url concatination using stored JSON data
+
+						var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
+						console.log(imageUrl);
+
+						// displaying image
+
+						var responseContainerEl = document.querySelector("#image");
+
+						responseContainerEl.innerHTML = '';
+
+						var flickrImg = document.createElement('img');
+						flickrImg.setAttribute('src', imageUrl);
+
+						responseContainerEl.appendChild(flickrImg);
+					});
+
+			})
+	};
 }
 
+// hiking trail search by state
 function stateSearch() {
-    var x = document.getElementById("demo");
-    x.innerHTML = ""
 
+	// clearing out coordinates
 
-    fetch("https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&q[state_cont]=washington", {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-key": "8d516f5377msh83238b25d8f111fp1c55fejsnd6aa548c8ae2",
-            "x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com"
-        }
-    })
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            console.log(data.places[0].city + " - " + data.places[0].name);
+	var x = document.getElementById("demo");
+	x.innerHTML = ""
 
-            var stateRaw = data.places[0].state;
-            var stateData = stateRaw.toLowerCase()
-            console.log(stateData);
+	// searching for hiking trails using 'trails api' using coordinates
 
-            var locationName = document.getElementById("locationName");
-            locationName.innerHTML = stateRaw
+	fetch("https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&q[state_cont]=washington", {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "8d516f5377msh83238b25d8f111fp1c55fejsnd6aa548c8ae2",
+			"x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com"
+		}
+	})
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (data) {
+			console.log(data);
+			console.log(data.places[0].city + " - " + data.places[0].name);
 
-            var randomSearch = Math.floor(Math.random() * 100)
-            console.log(randomSearch)
+			// storing state information
 
-            var trailOne = data.places[0].city + " - " + data.places[0].name;
-            var responseContainerEl = document.querySelector('#result-one');
-            responseContainerEl.innerHTML = trailOne;
+			var stateRaw = data.places[0].state;
+			var stateData = stateRaw.toLowerCase()
+			console.log(stateData);
 
-            var trailTwo = data.places[1].city + " - " + data.places[1].name;
-            var responseContainerEl = document.querySelector('#result-two');
-            responseContainerEl.innerHTML = trailTwo;
+			var locationName = document.getElementById("locationName");
+			locationName.innerHTML = stateRaw
 
-            var trailThree = data.places[2].city + " - " + data.places[2].name;
-            var responseContainerEl = document.querySelector('#result-three');
-            responseContainerEl.innerHTML = trailThree;
+			// displaying first five trails returned
 
-            var trailFour = data.places[3].city + " - " + data.places[3].name;
-            var responseContainerEl = document.querySelector('#result-four');
-            responseContainerEl.innerHTML = trailFour;
+			var trailOne = data.places[0].city + " - " + data.places[0].name;
+			var responseContainerEl = document.querySelector('#result-one');
+			responseContainerEl.innerHTML = trailOne;
 
-            var trailFive = data.places[4].city + " - " + data.places[4].name;
-            var responseContainerEl = document.querySelector('#result-five');
-            responseContainerEl.innerHTML = trailFive;
+			var trailTwo = data.places[1].city + " - " + data.places[1].name;
+			var responseContainerEl = document.querySelector('#result-two');
+			responseContainerEl.innerHTML = trailTwo;
 
-            fetch(
-                "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=eba4d59c3d1445ea6dcd1a28e8cca79f" +
-                "&tags=" + stateData + "outdoors" + "&format=json&nojsoncallback=1"
-            )
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    console.log(data);
-                    console.log(data.photos.photo[randomSearch].id);
+			var trailThree = data.places[2].city + " - " + data.places[2].name;
+			var responseContainerEl = document.querySelector('#result-three');
+			responseContainerEl.innerHTML = trailThree;
 
-                    var flickrServer = data.photos.photo[randomSearch].server;
-                    var flickrId = data.photos.photo[randomSearch].id;
-                    var flickrSecret = data.photos.photo[randomSearch].secret;
+			var trailFour = data.places[3].city + " - " + data.places[3].name;
+			var responseContainerEl = document.querySelector('#result-four');
+			responseContainerEl.innerHTML = trailFour;
 
-                    // Flickr image URL https://live.staticflickr.com/{server-id}/{id}_{secret}_{size-suffix}.jpg
-                    var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
-                    console.log(imageUrl);
+			var trailFive = data.places[4].city + " - " + data.places[4].name;
+			var responseContainerEl = document.querySelector('#result-five');
+			responseContainerEl.innerHTML = trailFive;
 
-                    var responseContainerEl = document.querySelector("#image");
+			// searching for image with flickr api using stored location data 
 
-                    responseContainerEl.innerHTML = '';
+			fetch(
+				"https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=eba4d59c3d1445ea6dcd1a28e8cca79f" +
+				"&tags=" + stateData + "outdoors" + "&format=json&nojsoncallback=1"
+			)
+				.then(function (response) {
+					return response.json();
+				})
+				.then(function (data) {
+					console.log(data);
 
-                    var flickrImg = document.createElement('img');
-                    flickrImg.setAttribute('src', imageUrl);
+					// declaring variable for randomizing photo selection
 
-                    responseContainerEl.appendChild(flickrImg);
-                });
+					var randomSearch = Math.floor(Math.random() * 100)
+					console.log(randomSearch)
 
-        })
+					console.log(data.photos.photo[randomSearch].id);
+
+					// flickr json response storage
+
+					var flickrServer = data.photos.photo[randomSearch].server;
+					var flickrId = data.photos.photo[randomSearch].id;
+					var flickrSecret = data.photos.photo[randomSearch].secret;
+
+					// flickr image url concatination using stored JSON data
+
+					var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
+					console.log(imageUrl);
+
+					// displaying image
+
+					var responseContainerEl = document.querySelector("#image");
+
+					responseContainerEl.innerHTML = '';
+
+					var flickrImg = document.createElement('img');
+					flickrImg.setAttribute('src', imageUrl);
+
+					responseContainerEl.appendChild(flickrImg);
+				});
+
+		})
 };
 
+// hiking trail search by city
 function citySearch() {
-    var x = document.getElementById("demo");
-    x.innerHTML = ""
 
-    fetch("https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&q[city_cont]=los angeles", {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-key": "8d516f5377msh83238b25d8f111fp1c55fejsnd6aa548c8ae2",
-            "x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com"
-        }
-    })
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            console.log(data.places[0].city + " - " + data.places[0].name);
+	// clearing out coordinates
 
-            var stateRaw = data.places[0].state;
-            var stateData = stateRaw.toLowerCase()
-            console.log(stateData);
+	var x = document.getElementById("demo");
+	x.innerHTML = ""
 
-            var locationName = document.getElementById("locationName");
-            locationName.innerHTML = stateRaw
+	// searching for hiking trails using 'trails api' using coordinates
 
-            var randomSearch = Math.floor(Math.random() * 100)
-            console.log(randomSearch)
 
-            var trailOne = data.places[0].city + " - " + data.places[0].name;
-            var responseContainerEl = document.querySelector('#result-one');
-            responseContainerEl.innerHTML = trailOne;
+	fetch("https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&q[city_cont]=los angeles", {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "8d516f5377msh83238b25d8f111fp1c55fejsnd6aa548c8ae2",
+			"x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com"
+		}
+	})
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (data) {
+			console.log(data);
+			console.log(data.places[0].city + " - " + data.places[0].name);
 
-            var trailTwo = data.places[1].city + " - " + data.places[1].name;
-            var responseContainerEl = document.querySelector('#result-two');
-            responseContainerEl.innerHTML = trailTwo;
+			// storing state information
 
-            var trailThree = data.places[2].city + " - " + data.places[2].name;
-            var responseContainerEl = document.querySelector('#result-three');
-            responseContainerEl.innerHTML = trailThree;
+			var stateRaw = data.places[0].state;
+			var stateData = stateRaw.toLowerCase()
+			console.log(stateData);
 
-            var trailFour = data.places[3].city + " - " + data.places[3].name;
-            var responseContainerEl = document.querySelector('#result-four');
-            responseContainerEl.innerHTML = trailFour;
+			var locationName = document.getElementById("locationName");
+			locationName.innerHTML = stateRaw
 
-            var trailFive = data.places[4].city + " - " + data.places[4].name;
-            var responseContainerEl = document.querySelector('#result-five');
-            responseContainerEl.innerHTML = trailFive;
+			// displaying first five trails returned
 
-            fetch(
-                "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=eba4d59c3d1445ea6dcd1a28e8cca79f" +
-                "&tags=" + stateData + "outdoors" + "&format=json&nojsoncallback=1"
-            )
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    console.log(data);
-                    console.log(data.photos.photo[randomSearch].id);
+			var trailOne = data.places[0].city + " - " + data.places[0].name;
+			var responseContainerEl = document.querySelector('#result-one');
+			responseContainerEl.innerHTML = trailOne;
 
-                    var flickrServer = data.photos.photo[randomSearch].server;
-                    var flickrId = data.photos.photo[randomSearch].id;
-                    var flickrSecret = data.photos.photo[randomSearch].secret;
+			var trailTwo = data.places[1].city + " - " + data.places[1].name;
+			var responseContainerEl = document.querySelector('#result-two');
+			responseContainerEl.innerHTML = trailTwo;
 
-                    // Flickr image URL https://live.staticflickr.com/{server-id}/{id}_{secret}_{size-suffix}.jpg
-                    var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
-                    console.log(imageUrl);
+			var trailThree = data.places[2].city + " - " + data.places[2].name;
+			var responseContainerEl = document.querySelector('#result-three');
+			responseContainerEl.innerHTML = trailThree;
 
-                    var responseContainerEl = document.querySelector("#image");
+			var trailFour = data.places[3].city + " - " + data.places[3].name;
+			var responseContainerEl = document.querySelector('#result-four');
+			responseContainerEl.innerHTML = trailFour;
 
-                    responseContainerEl.innerHTML = '';
+			var trailFive = data.places[4].city + " - " + data.places[4].name;
+			var responseContainerEl = document.querySelector('#result-five');
+			responseContainerEl.innerHTML = trailFive;
 
-                    var flickrImg = document.createElement('img');
-                    flickrImg.setAttribute('src', imageUrl);
+			// searching for image with flickr api using stored location data
 
-                    responseContainerEl.appendChild(flickrImg);
-                });
+			fetch(
+				"https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=eba4d59c3d1445ea6dcd1a28e8cca79f" +
+				"&tags=" + stateData + "outdoors" + "&format=json&nojsoncallback=1"
+			)
+				.then(function (response) {
+					return response.json();
+				})
+				.then(function (data) {
+					console.log(data);
 
-        })
+					// declaring variable for randomizing photo selection
+
+					var randomSearch = Math.floor(Math.random() * 100)
+					console.log(randomSearch)
+
+					console.log(data.photos.photo[randomSearch].id);
+
+					// flickr json response storage
+
+					var flickrServer = data.photos.photo[randomSearch].server;
+					var flickrId = data.photos.photo[randomSearch].id;
+					var flickrSecret = data.photos.photo[randomSearch].secret;
+
+					// flickr image url concatination using stored JSON data
+
+					var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
+					console.log(imageUrl);
+
+					// displaying image
+
+					var responseContainerEl = document.querySelector("#image");
+
+					responseContainerEl.innerHTML = '';
+
+					var flickrImg = document.createElement('img');
+					flickrImg.setAttribute('src', imageUrl);
+
+					responseContainerEl.appendChild(flickrImg);
+				});
+
+		})
 };
