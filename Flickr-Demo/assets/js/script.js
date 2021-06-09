@@ -8,9 +8,12 @@ fetch(
 		console.log(data);
 		console.log(data.photos.photo[0].id);
 
-		var flickrServer = data.photos.photo[0].server;
-		var flickrId = data.photos.photo[0].id;
-		var flickrSecret = data.photos.photo[0].secret;
+		var randomSearch = Math.floor(Math.random() * 100)
+		console.log(randomSearch)
+
+		var flickrServer = data.photos.photo[randomSearch].server;
+		var flickrId = data.photos.photo[randomSearch].id;
+		var flickrSecret = data.photos.photo[randomSearch].secret;
 
 		// Flickr image URL https://live.staticflickr.com/{server-id}/{id}_{secret}_{size-suffix}.jpg
 		var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
