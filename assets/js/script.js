@@ -133,9 +133,15 @@ function stateSearch() {
 	var x = document.getElementById("demo");
 	x.innerHTML = ""
 
+	// returning state selected
+
+	var stateSelected = document.getElementById('state-select').value;
+	console.log(stateSelected);
+
 	// searching for hiking trails using 'trails api' using coordinates
 
-	fetch("https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&q[state_cont]=washington", {
+	fetch("https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking" +
+		"&q[state_cont]=" + stateSelected, {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-key": "8d516f5377msh83238b25d8f111fp1c55fejsnd6aa548c8ae2",
@@ -182,9 +188,11 @@ function stateSearch() {
 
 			// searching for image with flickr api using stored location data 
 
+			console.log(stateData)
+
 			fetch(
 				"https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=eba4d59c3d1445ea6dcd1a28e8cca79f" +
-				"&tags=" + stateData + "outdoors" + "&format=json&nojsoncallback=1"
+				"&tags=" + stateData + "nature" + "&format=json&nojsoncallback=1"
 			)
 				.then(function (response) {
 					return response.json();
@@ -192,10 +200,20 @@ function stateSearch() {
 				.then(function (data) {
 					console.log(data);
 
-					// declaring variable for randomizing photo selection
+					// declaring variable for randomizing photo selection within 100
 
-					var randomSearch = Math.floor(Math.random() * 100)
+					if (data.photos.total > 99) {
+						var randomSearchMax = 99
+					}
+					else {
+						var randomSearchMax = data.photos.total - 1
+						console.log(randomSearchMax)
+					}
+
+					var randomSearch = Math.floor(Math.random() * randomSearchMax)
 					console.log(randomSearch)
+
+
 
 					console.log(data.photos.photo[randomSearch].id);
 
