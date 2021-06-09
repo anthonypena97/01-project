@@ -21,29 +21,43 @@
                 <li>
                     <a href="#my-to-do's">My To-Do's</a>
                 </li>
-                <li>
-                    <a href="#my-favorites">My Favorites</a>
-                </li>
-                
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main class="flex">
         <div>
             <!-- contains divs for search, map, and image container -->
         </div>
-        <div>
+        <section class="lists-section container">
             <!-- results list and favorites list -->
-
-        </div>
+            <div class="row justify-content-between">
+                
+                    <div class=" col-sm-5">
+                        <h3 class="card-header bg-info text-light d-flex align-items-center">Hikes Near Me</h3>
+                        <ul id="search-result-list" class="list-group list-group-flush"></ul>
+                    
+                </div>
+            
+                
+                <div class=" col-sm-5">
+                    <h3 class="card-header bg-info text-light d-flex align-items-center">Hikes To Do</h3>
+                    <ul id="toDo-list" class="list-group list-group-flus">
+                        <li>Hello World(input placeholder)</li>
+                    </ul>
+                
+            </div>
+            </div>
+        </section>
 
 
     </main>
     <footer>
-        <h2>Take a hike!</h2>
         <div>
-            <a href="#">Back to top</a>
+            <a href="#">
+                <h2>Take a hike!</h2>
+                <p>(back to top)</p>
+            </a>
         </div>
     </footer>
 
