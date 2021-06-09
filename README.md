@@ -20,6 +20,13 @@
 ### User can remove items from list.
 ### Styling allows formatting for different screen sizes with a mobile first UI.
 
+![docs google com-HikeFinder-GoogleSlides (2)](https://user-images.githubusercontent.com/82545902/121297353-0a219a00-c8a7-11eb-9247-2243e4f9e3b1.jpeg)
+
+![docs google com-HikeFinder-GoogleSlides (1)](https://user-images.githubusercontent.com/82545902/121297369-0f7ee480-c8a7-11eb-9eeb-c8ef5b0fdc9e.jpeg)
+
+![docs google com-HikeFinder-GoogleSlides](https://user-images.githubusercontent.com/82545902/121297379-14439880-c8a7-11eb-853c-8032ef8dd6f7.jpeg)
+
+
 ## Links to API's and wireframe mockups:
  https://developers.google.com/custom-search/v1/overview
  https://rapidapi.com/trailapi/api/trailapi
