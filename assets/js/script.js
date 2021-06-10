@@ -134,7 +134,7 @@ function stateSearch() {
 
 					// flickr image url concatination using stored JSON data
 
-					var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
+					var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "w" + ".jpg";
 
 					// displaying image
 
@@ -254,7 +254,7 @@ function citySearch() {
 
 						// flickr image url concatination using stored JSON data
 
-						var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
+						var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "w" + ".jpg";
 
 						// displaying image
 
@@ -394,7 +394,7 @@ function locationSearch() {
 
 						// flickr image url concatination using stored JSON data
 
-						var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
+						var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "w" + ".jpg";
 
 						// displaying image
 
