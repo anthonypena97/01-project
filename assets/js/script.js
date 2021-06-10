@@ -4,6 +4,37 @@
 // Trails API: https://rapidapi.com/trailapi/api/trailapi
 // Flickr API: https://www.flickr.com/services/api/
 
+// display saved to do list if data is stored
+
+function displayToDoList() {
+	var savedOne = localStorage.getItem("#to-do-one")
+	var savedTwo = localStorage.getItem("#to-do-two")
+	var savedThree = localStorage.getItem("#to-do-three")
+	var savedFour = localStorage.getItem("#to-do-four")
+	var savedFive = localStorage.getItem("#to-do-five")
+
+	var toDoContainerEl = document.querySelector('#to-do-one');
+	toDoContainerEl.innerHTML = savedOne;
+
+
+	var toDoContainerEl = document.querySelector('#to-do-two');
+	toDoContainerEl.innerHTML = savedTwo;
+
+
+	var toDoContainerEl = document.querySelector('#to-do-three');
+	toDoContainerEl.innerHTML = savedThree;
+
+
+	var toDoContainerEl = document.querySelector('#to-do-four');
+	toDoContainerEl.innerHTML = savedFour;
+
+	var toDoContainerEl = document.querySelector('#to-do-five');
+	toDoContainerEl.innerHTML = savedFive;
+};
+
+displayToDoList();
+
+
 // hiking trail search by state
 function stateSearch() {
 
@@ -456,6 +487,8 @@ function saveToDoOne() {
 
 	var toDoListContainerEl = document.querySelector(listNumber);
 	toDoListContainerEl.innerHTML = resultOneTitle;
+
+	localStorage.setItem(listNumber, resultOneTitle);
 };
 
 
@@ -493,6 +526,8 @@ function saveToDoTwo() {
 
 	var toDoListContainerEl = document.querySelector(listNumber);
 	toDoListContainerEl.innerHTML = resultTwoTitle;
+
+	localStorage.setItem(listNumber, resultTwoTitle);
 };
 
 function saveToDoThree() {
@@ -528,6 +563,8 @@ function saveToDoThree() {
 
 	var toDoListContainerEl = document.querySelector(listNumber);
 	toDoListContainerEl.innerHTML = resultThreeTitle;
+
+	localStorage.setItem(listNumber, resultThreeTitle);
 };
 
 function saveToDoFour() {
@@ -563,6 +600,8 @@ function saveToDoFour() {
 
 	var toDoListContainerEl = document.querySelector(listNumber);
 	toDoListContainerEl.innerHTML = resultFourTitle;
+
+	localStorage.setItem(listNumber, resultFourTitle);
 };
 
 function saveToDoFive() {
@@ -598,5 +637,39 @@ function saveToDoFive() {
 
 	var toDoListContainerEl = document.querySelector(listNumber);
 	toDoListContainerEl.innerHTML = resultFiveTitle;
+
+	localStorage.setItem(listNumber, resultFiveTitle);
 };
 
+function clearSavedList() {
+	localStorage.setItem("#to-do-one", "");
+	localStorage.setItem("#to-do-two", "");
+	localStorage.setItem("#to-do-three", "");
+	localStorage.setItem("#to-do-four", "");
+	localStorage.setItem("#to-do-five", "");
+
+	var savedOne = localStorage.getItem("#to-do-one");
+	var savedTwo = localStorage.getItem("#to-do-two");
+	var savedThree = localStorage.getItem("#to-do-three");
+	var savedFour = localStorage.getItem("#to-do-four");
+	var savedFive = localStorage.getItem("#to-do-five");
+
+	var toDoContainerEl = document.querySelector('#to-do-one');
+	toDoContainerEl.innerHTML = savedOne;
+
+
+	var toDoContainerEl = document.querySelector('#to-do-two');
+	toDoContainerEl.innerHTML = savedTwo;
+
+
+	var toDoContainerEl = document.querySelector('#to-do-three');
+	toDoContainerEl.innerHTML = savedThree;
+
+
+	var toDoContainerEl = document.querySelector('#to-do-four');
+	toDoContainerEl.innerHTML = savedFour;
+
+	var toDoContainerEl = document.querySelector('#to-do-five');
+	toDoContainerEl.innerHTML = savedFive;
+
+};
