@@ -93,12 +93,18 @@ function locationSearch() {
 					.then(function (data) {
 						console.log(data);
 
-						// declaring variable for randomizing photo selection
+						// declaring variable for randomizing photo selection within 100
 
-						var randomSearch = Math.floor(Math.random() * 100)
+						if (data.photos.total > 99) {
+							var randomSearchMax = 99
+						}
+						else {
+							var randomSearchMax = data.photos.total - 1
+							console.log(randomSearchMax)
+						}
+
+						var randomSearch = Math.floor(Math.random() * randomSearchMax)
 						console.log(randomSearch)
-
-						console.log(data.photos.photo[randomSearch].id);
 
 						// flickr json response storage
 
@@ -321,12 +327,18 @@ function citySearch() {
 					.then(function (data) {
 						console.log(data);
 
-						// declaring variable for randomizing photo selection
+						// declaring variable for randomizing photo selection within 100
 
-						var randomSearch = Math.floor(Math.random() * 100)
+						if (data.photos.total > 99) {
+							var randomSearchMax = 99
+						}
+						else {
+							var randomSearchMax = data.photos.total - 1
+							console.log(randomSearchMax)
+						}
+
+						var randomSearch = Math.floor(Math.random() * randomSearchMax)
 						console.log(randomSearch)
-
-						console.log(data.photos.photo[randomSearch].id);
 
 						// flickr json response storage
 
@@ -342,7 +354,6 @@ function citySearch() {
 						// displaying image
 
 						var responseContainerEl = document.querySelector("#image");
-
 						responseContainerEl.innerHTML = '';
 
 						var flickrImg = document.createElement('img');
@@ -360,5 +371,39 @@ function citySearch() {
 
 function invalidResponse() {
 	console.log("error")
+
+	// clearing coordinates
+	var coordinatesContainer = document.getElementById("coordinates");
+	coordinatesContainer.innerHTML = "";
+
+	// error message
+
+	var stateName = document.getElementById("stateName");
+	stateName.innerHTML = "Could not find any trails... Try another search!"
+
+	// clearing image container
+
+	var responseContainerEl = document.querySelector("#image");
+	responseContainerEl.innerHTML = '';
+
+	// clearing list
+
+	var responseContainerEl = document.querySelector('#result-one');
+	responseContainerEl.innerHTML = "";
+
+
+	var responseContainerEl = document.querySelector('#result-two');
+	responseContainerEl.innerHTML = "";
+
+
+	var responseContainerEl = document.querySelector('#result-three');
+	responseContainerEl.innerHTML = "";
+
+
+	var responseContainerEl = document.querySelector('#result-four');
+	responseContainerEl.innerHTML = "";
+
+	var responseContainerEl = document.querySelector('#result-five');
+	responseContainerEl.innerHTML = "";
 
 };
