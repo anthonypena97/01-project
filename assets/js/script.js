@@ -6,6 +6,8 @@
 
 // display saved to do list if data is stored
 
+console.log("Hello World")
+
 function displayToDoList() {
 	var savedOne = localStorage.getItem("#to-do-one")
 	var savedTwo = localStorage.getItem("#to-do-two")
@@ -145,10 +147,13 @@ function stateSearch() {
 
 					responseContainerEl.appendChild(flickrImg);
 
+
+
 				});
 
 		})
 };
+
 
 // hiking trail search by city
 function citySearch() {
