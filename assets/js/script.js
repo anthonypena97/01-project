@@ -57,13 +57,11 @@ function locationSearch() {
 			})
 			.then(function (data) {
 				console.log(data);
-				console.log(data.places[0].city + " - " + data.places[0].name);
 
 				// storing state information
 
 				var stateRaw = data.places[0].state;
 				var stateData = stateRaw.toLowerCase()
-				console.log(stateData);
 
 				var stateName = document.getElementById("stateName");
 				stateName.innerHTML = stateRaw
@@ -114,7 +112,6 @@ function locationSearch() {
 						}
 
 						var randomSearch = Math.floor(Math.random() * randomSearchMax)
-						console.log(randomSearch)
 
 						// flickr json response storage
 
@@ -125,7 +122,6 @@ function locationSearch() {
 						// flickr image url concatination using stored JSON data
 
 						var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
-						console.log(imageUrl);
 
 						// displaying image
 
@@ -159,7 +155,6 @@ function stateSearch() {
 	// returning state selected
 
 	var stateSelected = document.getElementById('state-select').value;
-	console.log(stateSelected);
 
 	// searching for hiking trails using 'trails api' using coordinates
 
@@ -176,13 +171,11 @@ function stateSearch() {
 		})
 		.then(function (data) {
 			console.log(data);
-			console.log(data.places[0].city + " - " + data.places[0].name);
 
 			// storing state information
 
 			var stateRaw = data.places[0].state;
 			var stateData = stateRaw.toLowerCase()
-			console.log(stateData);
 
 			var stateName = document.getElementById("stateName");
 			stateName.innerHTML = stateRaw
@@ -211,8 +204,6 @@ function stateSearch() {
 
 			// searching for image with flickr api using stored location data 
 
-			console.log(stateData)
-
 			fetch(
 				"https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7b6eb8de4551bd2b88abd732cc9daf53" +
 				"&tags=" + stateData + "nature" + "&format=json&nojsoncallback=1"
@@ -230,15 +221,9 @@ function stateSearch() {
 					}
 					else {
 						var randomSearchMax = data.photos.total - 1
-						console.log(randomSearchMax)
 					}
 
 					var randomSearch = Math.floor(Math.random() * randomSearchMax)
-					console.log(randomSearch)
-
-
-
-					console.log(data.photos.photo[randomSearch].id);
 
 					// flickr json response storage
 
@@ -249,7 +234,6 @@ function stateSearch() {
 					// flickr image url concatination using stored JSON data
 
 					var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
-					console.log(imageUrl);
 
 					// displaying image
 
@@ -276,8 +260,6 @@ function citySearch() {
 
 	var cityData = document.querySelector('#city-select').value;
 
-	console.log(cityData)
-
 	// clearing out coordinates
 
 	var coordinatesContainer = document.getElementById("coordinates");
@@ -301,14 +283,11 @@ function citySearch() {
 			if (data.places.length > 0) {
 
 				console.log(data);
-				console.log(data.places.length)
-				console.log(data.places[0].city + " - " + data.places[0].name);
 
 				// storing state information
 
 				var stateRaw = data.places[0].state;
 				var stateData = stateRaw.toLowerCase()
-				console.log(stateData);
 
 				var stateName = document.getElementById("stateName");
 				stateName.innerHTML = stateRaw
@@ -358,7 +337,6 @@ function citySearch() {
 						}
 
 						var randomSearch = Math.floor(Math.random() * randomSearchMax)
-						console.log(randomSearch)
 
 						// flickr json response storage
 
@@ -369,7 +347,6 @@ function citySearch() {
 						// flickr image url concatination using stored JSON data
 
 						var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
-						console.log(imageUrl);
 
 						// displaying image
 
