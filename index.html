@@ -25,28 +25,85 @@
         </nav>
     </header>
 
-    <main class="flex">
-        <div>
-            <!-- contains divs for search, map, and image container -->
+    <main class="main-content">
+
+        <div class="container flex">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row">
+                        <h2 id="find-hike">Find my Hike</h2>
+                    </div>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+
+                                <input type="text" class="form-control" id="inputstate" placeholder="Search by State">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+
+                                <input type="text" class="form-control" id="inputCity" placeholder="Search by City">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        </div>
+                        <button type="button" class="btn btn-info">Search by My Location</button>
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </form>
+
+                </div>
+                <div class="col-sm">
+                    <img src="..." class="figure-img img-fluid rounded" alt="...">
+                </div>
+                <div class="col-sm">
+                    <figure class="figure">
+                        <img src="..." class="figure-img img-fluid rounded" alt="...">
+                        <figcaption class="figure-caption text-right">A caption for the above image.</figcaption>
+                    </figure>
+                </div>
+            </div>
         </div>
         <section class="lists-section container">
             <!-- results list and favorites list -->
             <div class="row justify-content-between">
-                
-                    <div class=" col-sm-5">
-                        <h3 class="card-header bg-info text-light d-flex align-items-center">Hikes Near Me</h3>
-                        <ul id="search-result-list" class="list-group list-group-flush"></ul>
+                <div class=" col-sm-5">
+                    <h3 class="card-header bg-info text-light d-flex align-items-center">Search Results</h3>
+                    <ul id="search-result-list" class="list-group list-group-flush"></ul>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
+                    <li>one</li>
                     
                 </div>
-            
-                
                 <div class=" col-sm-5">
-                    <h3 class="card-header bg-info text-light d-flex align-items-center">Hikes To Do</h3>
+                    <h3 id="my-to-do's" class="card-header bg-info text-light d-flex align-items-center">Hikes To Do
+                    </h3>
                     <ul id="toDo-list" class="list-group list-group-flus">
                         <li>Hello World(input placeholder)</li>
                     </ul>
-                
-            </div>
+
+                </div>
             </div>
         </section>
 
