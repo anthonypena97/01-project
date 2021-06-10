@@ -1,12 +1,14 @@
 # Trail Finders
 
+#### Use client-side storage to store persistent data.<img width="1439" alt="Screen Shot 2021-06-10 at 5 39 35 PM" src="https://user-images.githubusercontent.com/79285555/121610403-2fcbb200-ca13-11eb-8865-40d3631783eb.png">
+
 ## Project Requirements:
 #### Use a CSS framework other than Bootstrap (Bootstrap Ok'd).
 #### Be deployed to GitHub Pages.
 #### Be interactive (i.e., accept and respond to user input).
 #### Use at least two server-side APIs.
 #### Does not use alerts, confirms, or prompts (use modals).
-#### Use client-side storage to store persistent data.
+
 #### Be responsive.
 #### Have a polished UI.
 #### Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
