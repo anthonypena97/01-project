@@ -4,141 +4,6 @@
 // Trails API: https://rapidapi.com/trailapi/api/trailapi
 // Flickr API: https://www.flickr.com/services/api/
 
-// hiking trail search by user longitude and latitude location
-// get location
-function locationSearch() {
-
-	// reset state select field
-
-	var stateList = document.getElementById("state-select");
-	stateList.value = "";
-
-	// reset city text field
-
-	var cityTextField = document.getElementById("city-select");
-	cityTextField.value = "City...";
-
-	var coordinatesContainer = document.getElementById("coordinates");
-
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(showPosition);
-	}
-	else {
-		coordinatesContainer.innerHTML = "Geolocation is not supported by this browser.";
-	};
-
-	function getLocation() {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(showPosition);
-		} else {
-			coordinatesContainer.innerHTML = "Geolocation is not supported by this browser.";
-		}
-	};
-
-	// display coordinates
-	function showPosition(position) {
-		var latData = position.coords.latitude;
-		var lonData = position.coords.longitude;
-		coordinatesContainer.innerHTML = "Latitude: " + latData +
-			"<br>Longitude: " + lonData;
-
-		// searching for hiking trails using 'trails api' using coordinates
-		fetch("https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&radius=25"
-			+ "&lon=" + lonData
-			+ "&lat=" + latData, {
-			"method": "GET",
-			"headers": {
-				"x-rapidapi-key": "8d516f5377msh83238b25d8f111fp1c55fejsnd6aa548c8ae2",
-				"x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com"
-			}
-		})
-			.then(function (response) {
-				return response.json();
-			})
-			.then(function (data) {
-				console.log(data);
-
-				// storing state information
-
-				var stateRaw = data.places[0].state;
-				var stateData = stateRaw.toLowerCase()
-
-				var stateName = document.getElementById("stateName");
-				stateName.innerHTML = stateRaw
-
-				// displaying first five trails returned
-
-				var trailOne = data.places[0].city + " - " + data.places[0].name;
-				var responseContainerEl = document.querySelector('#result-one');
-				responseContainerEl.innerHTML = trailOne;
-
-				var trailTwo = data.places[1].city + " - " + data.places[1].name;
-				var responseContainerEl = document.querySelector('#result-two');
-				responseContainerEl.innerHTML = trailTwo;
-
-				var trailThree = data.places[2].city + " - " + data.places[2].name;
-				var responseContainerEl = document.querySelector('#result-three');
-				responseContainerEl.innerHTML = trailThree;
-
-				var trailFour = data.places[3].city + " - " + data.places[3].name;
-				var responseContainerEl = document.querySelector('#result-four');
-				responseContainerEl.innerHTML = trailFour;
-
-				var trailFive = data.places[4].city + " - " + data.places[4].name;
-				var responseContainerEl = document.querySelector('#result-five');
-				responseContainerEl.innerHTML = trailFive;
-
-				// searching for image with flickr api using stored location data 
-
-				fetch(
-
-					"https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7b6eb8de4551bd2b88abd732cc9daf53" +
-					"&tags=" + stateData + "outdoors" + "&format=json&nojsoncallback=1"
-				)
-					.then(function (response) {
-						return response.json();
-					})
-					.then(function (data) {
-						console.log(data);
-
-						// declaring variable for randomizing photo selection within 100
-
-						if (data.photos.total > 99) {
-							var randomSearchMax = 99
-						}
-						else {
-							var randomSearchMax = data.photos.total - 1
-							console.log(randomSearchMax)
-						}
-
-						var randomSearch = Math.floor(Math.random() * randomSearchMax)
-
-						// flickr json response storage
-
-						var flickrServer = data.photos.photo[randomSearch].server;
-						var flickrId = data.photos.photo[randomSearch].id;
-						var flickrSecret = data.photos.photo[randomSearch].secret;
-
-						// flickr image url concatination using stored JSON data
-
-						var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
-
-						// displaying image
-
-						var responseContainerEl = document.querySelector("#image");
-
-						responseContainerEl.innerHTML = '';
-
-						var flickrImg = document.createElement('img');
-						flickrImg.setAttribute('src', imageUrl);
-
-						responseContainerEl.appendChild(flickrImg);
-					});
-
-			})
-	};
-}
-
 // hiking trail search by state
 function stateSearch() {
 
@@ -181,6 +46,9 @@ function stateSearch() {
 			stateName.innerHTML = stateRaw
 
 			// displaying first five trails returned
+
+			var bulletsON = document.getElementById("result-list");
+			bulletsON.style = ""
 
 			var trailOne = data.places[0].city + " - " + data.places[0].name;
 			var responseContainerEl = document.querySelector('#result-one');
@@ -245,6 +113,7 @@ function stateSearch() {
 					flickrImg.setAttribute('src', imageUrl);
 
 					responseContainerEl.appendChild(flickrImg);
+
 				});
 
 		})
@@ -293,6 +162,9 @@ function citySearch() {
 				stateName.innerHTML = stateRaw
 
 				// displaying first five trails returned
+
+				var bulletsON = document.getElementById("result-list");
+				bulletsON.style = ""
 
 				var trailOne = data.places[0].city + " - " + data.places[0].name;
 				var responseContainerEl = document.querySelector('#result-one');
@@ -366,6 +238,144 @@ function citySearch() {
 		})
 };
 
+// hiking trail search by user longitude and latitude location
+// get location
+function locationSearch() {
+
+	// reset state select field
+
+	var stateList = document.getElementById("state-select");
+	stateList.value = "";
+
+	// reset city text field
+
+	var cityTextField = document.getElementById("city-select");
+	cityTextField.value = "City...";
+
+	var coordinatesContainer = document.getElementById("coordinates");
+
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+	}
+	else {
+		coordinatesContainer.innerHTML = "Geolocation is not supported by this browser.";
+	};
+
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+		} else {
+			coordinatesContainer.innerHTML = "Geolocation is not supported by this browser.";
+		}
+	};
+
+	// display coordinates
+	function showPosition(position) {
+		var latData = position.coords.latitude;
+		var lonData = position.coords.longitude;
+		coordinatesContainer.innerHTML = "Latitude: " + latData +
+			"<br>Longitude: " + lonData;
+
+		// searching for hiking trails using 'trails api' using coordinates
+		fetch("https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&radius=25"
+			+ "&lon=" + lonData
+			+ "&lat=" + latData, {
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-key": "8d516f5377msh83238b25d8f111fp1c55fejsnd6aa548c8ae2",
+				"x-rapidapi-host": "trailapi-trailapi.p.rapidapi.com"
+			}
+		})
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (data) {
+				console.log(data);
+
+				// storing state information
+
+				var stateRaw = data.places[0].state;
+				var stateData = stateRaw.toLowerCase()
+
+				var stateName = document.getElementById("stateName");
+				stateName.innerHTML = stateRaw
+
+				// displaying first five trails returned
+
+				var bulletsON = document.getElementById("result-list");
+				bulletsON.style = ""
+
+				var trailOne = data.places[0].city + " - " + data.places[0].name;
+				var responseContainerEl = document.querySelector('#result-one');
+				responseContainerEl.innerHTML = trailOne;
+
+				var trailTwo = data.places[1].city + " - " + data.places[1].name;
+				var responseContainerEl = document.querySelector('#result-two');
+				responseContainerEl.innerHTML = trailTwo;
+
+				var trailThree = data.places[2].city + " - " + data.places[2].name;
+				var responseContainerEl = document.querySelector('#result-three');
+				responseContainerEl.innerHTML = trailThree;
+
+				var trailFour = data.places[3].city + " - " + data.places[3].name;
+				var responseContainerEl = document.querySelector('#result-four');
+				responseContainerEl.innerHTML = trailFour;
+
+				var trailFive = data.places[4].city + " - " + data.places[4].name;
+				var responseContainerEl = document.querySelector('#result-five');
+				responseContainerEl.innerHTML = trailFive;
+
+				// searching for image with flickr api using stored location data 
+
+				fetch(
+
+					"https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7b6eb8de4551bd2b88abd732cc9daf53" +
+					"&tags=" + stateData + "outdoors" + "&format=json&nojsoncallback=1"
+				)
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (data) {
+						console.log(data);
+
+						// declaring variable for randomizing photo selection within 100
+
+						if (data.photos.total > 99) {
+							var randomSearchMax = 99
+						}
+						else {
+							var randomSearchMax = data.photos.total - 1
+							console.log(randomSearchMax)
+						}
+
+						var randomSearch = Math.floor(Math.random() * randomSearchMax)
+
+						// flickr json response storage
+
+						var flickrServer = data.photos.photo[randomSearch].server;
+						var flickrId = data.photos.photo[randomSearch].id;
+						var flickrSecret = data.photos.photo[randomSearch].secret;
+
+						// flickr image url concatination using stored JSON data
+
+						var imageUrl = "https://live.staticflickr.com/" + flickrServer + "/" + flickrId + "_" + flickrSecret + "_" + "m" + ".jpg";
+
+						// displaying image
+
+						var responseContainerEl = document.querySelector("#image");
+
+						responseContainerEl.innerHTML = '';
+
+						var flickrImg = document.createElement('img');
+						flickrImg.setAttribute('src', imageUrl);
+
+						responseContainerEl.appendChild(flickrImg);
+					});
+
+			})
+	};
+}
+
 function invalidResponse() {
 	console.log("error")
 
@@ -404,3 +414,189 @@ function invalidResponse() {
 	responseContainerEl.innerHTML = "";
 
 };
+
+// saving list results in to do list using local storage
+
+//  cycle through to do list slots
+
+var currentSlot = 0;
+
+function saveToDoOne() {
+
+	// making sure list resets after 5
+
+	console.log(currentSlot);
+
+	if (currentSlot === 5) {
+		currentSlot = 0;
+	};
+
+	currentSlot = currentSlot + 1;
+
+	var resultOne = document.getElementById("result-one");
+	var resultOneTitle = resultOne.innerHTML
+
+	// caculation of which list slot to go in
+
+	if (currentSlot === 1) {
+		var listNumber = "#to-do-one"
+	};
+	if (currentSlot === 2) {
+		var listNumber = "#to-do-two"
+	};
+	if (currentSlot === 3) {
+		var listNumber = "#to-do-three"
+	};
+	if (currentSlot === 4) {
+		var listNumber = "#to-do-four"
+	};
+	if (currentSlot === 5) {
+		var listNumber = "#to-do-five"
+	};
+
+	var toDoListContainerEl = document.querySelector(listNumber);
+	toDoListContainerEl.innerHTML = resultOneTitle;
+};
+
+
+
+function saveToDoTwo() {
+
+	// making sure list resets after 5
+
+	if (currentSlot === 5) {
+		currentSlot = 0;
+	};
+
+	currentSlot = currentSlot + 1;
+
+	var resultTwo = document.getElementById("result-two");
+	var resultTwoTitle = resultTwo.innerHTML
+
+	// caculation of which list slot to go in
+
+	if (currentSlot === 1) {
+		var listNumber = "#to-do-one"
+	};
+	if (currentSlot === 2) {
+		var listNumber = "#to-do-two"
+	};
+	if (currentSlot === 3) {
+		var listNumber = "#to-do-three"
+	};
+	if (currentSlot === 4) {
+		var listNumber = "#to-do-four"
+	};
+	if (currentSlot === 5) {
+		var listNumber = "#to-do-five"
+	};
+
+	var toDoListContainerEl = document.querySelector(listNumber);
+	toDoListContainerEl.innerHTML = resultTwoTitle;
+};
+
+function saveToDoThree() {
+
+	// making sure list resets after 5
+
+	if (currentSlot === 5) {
+		currentSlot = 0;
+	};
+
+	currentSlot = currentSlot + 1;
+
+	var resultThree = document.getElementById("result-three");
+	var resultThreeTitle = resultThree.innerHTML
+
+	// caculation of which list slot to go in
+
+	if (currentSlot === 1) {
+		var listNumber = "#to-do-one"
+	};
+	if (currentSlot === 2) {
+		var listNumber = "#to-do-two"
+	};
+	if (currentSlot === 3) {
+		var listNumber = "#to-do-three"
+	};
+	if (currentSlot === 4) {
+		var listNumber = "#to-do-four"
+	};
+	if (currentSlot === 5) {
+		var listNumber = "#to-do-five"
+	};
+
+	var toDoListContainerEl = document.querySelector(listNumber);
+	toDoListContainerEl.innerHTML = resultThreeTitle;
+};
+
+function saveToDoFour() {
+
+	// making sure list resets after 5
+
+	if (currentSlot === 5) {
+		currentSlot = 0;
+	};
+
+	currentSlot = currentSlot + 1;
+
+	var resultFour = document.getElementById("result-four");
+	var resultFourTitle = resultFour.innerHTML
+
+	// caculation of which list slot to go in
+
+	if (currentSlot === 1) {
+		var listNumber = "#to-do-one"
+	};
+	if (currentSlot === 2) {
+		var listNumber = "#to-do-two"
+	};
+	if (currentSlot === 3) {
+		var listNumber = "#to-do-three"
+	};
+	if (currentSlot === 4) {
+		var listNumber = "#to-do-four"
+	};
+	if (currentSlot === 5) {
+		var listNumber = "#to-do-five"
+	};
+
+	var toDoListContainerEl = document.querySelector(listNumber);
+	toDoListContainerEl.innerHTML = resultFourTitle;
+};
+
+function saveToDoFive() {
+
+	// making sure list resets after 5
+
+	if (currentSlot === 5) {
+		currentSlot = 0;
+	};
+
+	currentSlot = currentSlot + 1;
+
+	var resultFive = document.getElementById("result-five");
+	var resultFiveTitle = resultFive.innerHTML
+
+	// caculation of which list slot to go in
+
+	if (currentSlot === 1) {
+		var listNumber = "#to-do-one"
+	};
+	if (currentSlot === 2) {
+		var listNumber = "#to-do-two"
+	};
+	if (currentSlot === 3) {
+		var listNumber = "#to-do-three"
+	};
+	if (currentSlot === 4) {
+		var listNumber = "#to-do-four"
+	};
+	if (currentSlot === 5) {
+		var listNumber = "#to-do-five"
+	};
+
+	var toDoListContainerEl = document.querySelector(listNumber);
+	toDoListContainerEl.innerHTML = resultFiveTitle;
+};
+
