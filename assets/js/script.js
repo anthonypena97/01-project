@@ -8,6 +8,16 @@
 // get location
 function locationSearch() {
 
+	// reset state select field
+
+	var stateList = document.getElementById("state-select");
+	stateList.value = "";
+
+	// reset city text field
+
+	var cityTextField = document.getElementById("city-select");
+	cityTextField.value = "City...";
+
 	var coordinatesContainer = document.getElementById("coordinates");
 
 	if (navigator.geolocation) {
@@ -136,6 +146,11 @@ function locationSearch() {
 // hiking trail search by state
 function stateSearch() {
 
+	// reset city text field
+
+	var cityTextField = document.getElementById("city-select");
+	cityTextField.value = "City...";
+
 	// clearing out coordinates
 
 	var coordinatesContainer = document.getElementById("coordinates");
@@ -253,6 +268,11 @@ function stateSearch() {
 
 // hiking trail search by city
 function citySearch() {
+
+	// reset state select field
+
+	var stateList = document.getElementById("state-select");
+	stateList.value = "";
 
 	var cityData = document.querySelector('#city-select').value;
 
