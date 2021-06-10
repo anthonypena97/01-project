@@ -11,26 +11,64 @@
 </head>
 
 <body>
-    <header class="hero">
-        <h1>My Hike!</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#something">something</a>
-                </li>
-                <li>
-                    <a href="#something-else">something else</a>
-                </li>
-                <li>
-                    <a href="#even-more">even more</a>
-                </li>
-                
-            </ul>
-        </nav>
-    </header>
+    
+    <div class="container-fluid">
+       
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>My Hike!</h1>
+            <div class="col-sm-4">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <h6><a href="#to-do" class="text-dark">To do</a></h6>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+
     <main>
-
-
+        <div class="container">
+            <div class="row">
+              <div class="col-sm">
+               <div class="row">
+                   <h2>Find my Hike</h2>
+                </div>
+                <form>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        
+                        <input type="text" class="form-control" id="inputstate" placeholder="Search by State">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        
+                        <input type="text" class="form-control" id="inputCity" placeholder="Search by City">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <button type="button" class="btn btn-info">Search by My Location</button>
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                  </form>
+                   
+              </div>
+              <div class="col-sm">
+                <img src="..." class="figure-img img-fluid rounded" alt="...">
+              </div>
+              <div class="col-sm">
+                <figure class="figure">
+                    <img src="..." class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption text-right">A caption for the above image.</figcaption>
+                  </figure>
+              </div>
+            </div>
+          </div>  
+          
+       
     </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
