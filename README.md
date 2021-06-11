@@ -3,6 +3,11 @@
 #### Use client-side storage to store persistent data.<img width="1439" alt="Screen Shot 2021-06-10 at 5 39 35 PM" src="https://user-images.githubusercontent.com/79285555/121610403-2fcbb200-ca13-11eb-8865-40d3631783eb.png">
 ###### Website 06/10/2021
 
+## live site - https://anthonypena97.github.io/01-project/
+
+## Presentation
+### https://docs.google.com/presentation/d/18NjLU_C_W3Be-7Xtx6Clr72G-P2esd4hXV05kk0QLuY/edit?usp=sharing
+
 ## Project Requirements:
 #### Use a CSS framework other than Bootstrap (Bootstrap Ok'd).
 #### Be deployed to GitHub Pages.
