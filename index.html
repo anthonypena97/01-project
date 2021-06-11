@@ -2,14 +2,190 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="./assets/css/style.css" />
+	<title>Trail Finder!</title>
 </head>
-<h1>Hello World!</h1>
 
 <body>
+	<header class="hero">
+		<h1>Trail Finder!</h1>
+		<nav>
+			<ul>
+				<li>
+					<a href="#find-hike">Find Hike</a>
+				</li>
+				<li>
+					<a href="#my-to-do's">My To-Do's</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="container flex">
+			<div class="row">
+				<div class="col-sm">
+					<form class="card-header bg-info text-light">
+						<h2 id="find-hike">Find my Hike</h2>
+						<!-- search by state -->
+						<div class="form-row">
+							<div id="state-list" class="form-group">
+								<select id="state-select" class="form-control">
+									<option selected value="">State...</option>
+									<option value="None">None</option>
+									<option value="">-- UNITED STATES --</option>
+									<option value="Alabama">Alabama</option>
+									<option value="Alaska">Alaska</option>
+									<option value="Arizona">Arizona</option>
+									<option value="Arkansas">Arkansas</option>
+									<option value="California">California</option>
+									<option value="Colorado">Colorado</option>
+									<option value="Connecticut">Connecticut</option>
+									<option value="Delaware">Delaware</option>
+									<option value="Florida">Florida</option>
+									<option value="Georgia">Georgia</option>
+									<option value="Hawaii">Hawaii</option>
+									<option value="Idaho">Idaho</option>
+									<option value="Illinois">Illinois</option>
+									<option value="Indiana">Indiana</option>
+									<option value="Iowa">Iowa</option>
+									<option value="Kansas">Kansas</option>
+									<option value="Kentucky">Kentucky</option>
+									<option value="Louisiana">Louisiana</option>
+									<option value="Maine">Maine</option>
+									<option value="Maryland">Maryland</option>
+									<option value="Massachusetts">Massachusetts</option>
+									<option value="Michigan">Michigan</option>
+									<option value="Minnesota">Minnesota</option>
+									<option value="Mississippi">Mississippi</option>
+									<option value="Missouri">Missouri</option>
+									<option value="Montana">Montana</option>
+									<option value="Nebraska">Nebraska</option>
+									<option value="Nevada">Nevada</option>
+									<option value="New Hampshire">New Hampshire</option>
+									<option value="New Jersey">New Jersey</option>
+									<option value="New Mexico">New Mexico</option>
+									<option value="New York">New York</option>
+									<option value="North Carolina">North Carolina</option>
+									<option value="North Dakota">North Dakota</option>
+									<option value="Ohio">Ohio</option>
+									<option value="Oklahoma">Oklahoma</option>
+									<option value="Oregon">Oregon</option>
+									<option value="Pennsylvania">Pennsylvania</option>
+									<option value="Rhode Island">Rhode Island</option>
+									<option value="South Carolina">South Carolina</option>
+									<option value="South Dakota">South Dakota</option>
+									<option value="Tennessee">Tennessee</option>
+									<option value="Texas">Texas</option>
+									<option value="Utah">Utah</option>
+									<option value="Vermont">Vermont</option>
+									<option value="Virginia">Virginia</option>
+									<option value="Washington">Washington</option>
+									<option value="West Virginia">West Virginia</option>
+									<option value="Wisconsin">Wisconsin</option>
+									<option value="Wyoming">Wyoming</option>
+									<option value="">-- CANADA --</option>
+									<option value="Alberta">Alberta</option>
+									<option value="British Columbia">British Columbia</option>
+									<option value="Manitoba">Manitoba</option>
+									<option value="New Brunswick">New Brunswick</option>
+									<option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+									<option value="Northwest Territories">Northwest Territories</option>
+									<option value="Nova Scotia">Nova Scotia</option>
+									<option value="Nunavut">Nunavut</option>
+									<option value="Ontario">Ontario</option>
+									<option value="Prince Edward Island">Prince Edward Island</option>
+									<option value="Quebec">Quebec</option>
+									<option value="Saskatchewan">Saskatchewan</option>
+									<option value="Yukon Territory">Yukon Territory</option>
+								</select>
+								<button type='button' onclick="stateSearch()">Search by State</button>
+							</div>
+						</div>
+						<!-- search by city -->
+						<div class="form-row">
+							<div class="form-group">
+								<input type="text" id="city-select" value="City...">
+								<br>
+								<button type='button' onclick="citySearch()">Search by City</button>
+							</div>
+						</div>
+						<!-- search by location -->
+						<div class="form-row">
+							<button type='button' onclick="locationSearch()">Search using my location</button>
+						</div>
+					</form>
+				</div>
+				<div class="col-sm">
+					<div id="image" class="figure-img img-fluid rounded" alt="...">
+					</div>
+				</div>
+				<div class="col-sm">
+					<figure class="figure">
+						<div id="image" class="figure-img img-fluid rounded" alt="...">
+						</div>
+						<p id="coordinates"></p>
+						<figcaption class="figure-caption text-right"></figcaption>
+					</figure>
+				</div>
+			</div>
+		</div>
+		<section class="lists-section container">
+			<div class="row justify-content-between">
+				<div class="col-sm-5">
+					<h3 class="card-header bg-info text-light d-flex align-items-center">Search Results</h3>
+					<h4 id="stateName" style="color:white;"></h4>
+					<ul id="result-list" style="list-style-type:none">
+						<li>
+							<a href=" javascript:void(0)" id="result-one" onclick="saveToDoOne()" style="color:white;"></a>
+						</li>
+
+						<li>
+							<a href="javascript:void(0)" id="result-two" onclick="saveToDoTwo()" style="color:white;"></a>
+						</li>
+
+						<li>
+							<a href="javascript:void(0)" id="result-three" onclick="saveToDoThree()" style="color:white;"></a>
+						</li>
+
+						<li>
+							<a href="javascript:void(0)" id="result-four" onclick="saveToDoFour()" style="color:white;"></a>
+						</li>
+
+						<li>
+							<a href="javascript:void(0)" id="result-five" onclick="saveToDoFive()" style="color:white;"></a>
+						</li>
+					</ul>
+				</div>
+				<div class=" col-sm-5" style="color:white;">
+					<h3 id="my-to-do's" class="card-header bg-info text-light d-flex align-items-center">Hikes To Do
+					</h3>
+					<p id="to-do-one"></p>
+					<p id="to-do-two"></p>
+					<p id="to-do-three"></p>
+					<p id="to-do-four"></p>
+					<p id="to-do-five"></p>
+					<button onclick="clearSavedList()">Clear List</button>
+				</div>
+			</div>
+		</section>
+	</main>
+
+
+	<footer>
+		<div>
+			<a href="#">
+				<h2>Take a hike!</h2>
+				<p>(back to top)</p>
+			</a>
+		</div>
+	</footer>
+
+	<script src="./assets/js/script.js"></script>
 
 </body>
 
