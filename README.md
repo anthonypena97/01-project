@@ -39,5 +39,3 @@
  https://developers.google.com/custom-search/v1/overview
  https://rapidapi.com/trailapi/api/trailapi
  https://docs.google.com/presentation/d/1YeTr1txjycer_Ky-fhGOn1EQl39n-ltKinsgPUMtPNo/edit?usp=sharing
- #### Link to Google Slides for Project Presentation 
- https://docs.google.com/presentation/d/18NjLU_C_W3Be-7Xtx6Clr72G-P2esd4hXV05kk0QLuY/edit?usp=sharing
