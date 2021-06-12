@@ -144,8 +144,9 @@
 			<div class="row justify-content-between px-lg-5 ">
 				<div class="col-md">
 					<h3 class="text-color card-header bg-info d-flex align-items-center">Search Results</h3>
-					<h4 id="stateName" style="color:orange;"></h4>
+					
 					<ul id="result-list" style="list-style-type: none">
+						<h4 id="stateName" style="color:orange;"></h4>
 						<li>
 							<a href=" javascript:void(0)" id="result-one" onclick="saveToDoOne()" style="color:orange;"></a>
 						</li>
@@ -170,11 +171,13 @@
 				<div class=" col-md">
 					<h3 id="my-to-dos" class="text-color card-header bg-info d-flex align-items-center">Hikes To Do
 					</h3>
-					<p id="to-do-one"></p>
-					<p id="to-do-two"></p>
-					<p id="to-do-three"></p>
-					<p id="to-do-four"></p>
-					<p id="to-do-five"></p>
+					<ul class="my-to-dos">
+					<li id="to-do-one"></li>
+					<li id="to-do-two"></li>
+					<li id="to-do-three"></li>
+					<li id="to-do-four"></li>
+					<li id="to-do-five"></li>
+					</ul>
 					<button class="text-color" onclick="clearSavedList()">Clear List</button>
 				</div>
 			</div>

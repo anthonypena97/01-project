@@ -25,12 +25,14 @@ main {
     text-shadow: 1px 1px black;
 }
 
-#result-list {
+#result-list, .my-to-dos {
     list-style: none;
+    background-color:grey;
     
 }
 #stateName {
     font-weight: bold;
+    text-shadow: 1px 1px black;
     text-decoration: underline;
     background-color: grey;
 }
