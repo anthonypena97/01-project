@@ -6,58 +6,23 @@ body {
     background-position:top;
 }
 
-header {  
-    padding: 20px 30px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    
-}
-
-header h1{
-    color: tomato;
-    font-size: 60px;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-header nav {
-    display: flex;
-}
-
-header nav ul {
-    padding: 20px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    color:tomato;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-header nav ul li a {
-    padding: 10px 15px;
-    color: rgb(24, 69, 90);
-    font-weight: bold;
-    text-shadow: 10 10 15px rgba(0, 0, 0, 0.5); 
+main {
+    margin: auto;
 }
 .navbar-toggler {
     background-color: orange;
-}
-
-.navbar-toggler-icon {
-    color: blue;
+    border-color: black;
 }
 
 .navbar-brand, .nav-link, .text-color {
     color: orange;
+    text-shadow: 1px 1px black;
 }
 
 #to-do-one, #to-do-two, #to-do-three, #to-do-four, #to-do-five, #result-one, #result-two, #result-three, #result-four, #result-five {
     background-color: grey;
     color: orange;
+    text-shadow: 1px 1px black;
 }
 
 #result-list {
@@ -69,19 +34,7 @@ header nav ul li a {
     text-decoration: underline;
     background-color: grey;
 }
-main {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    
-    background-image: url("../images/mountain landscape.jpg");
-    height: 150vh;
-    background-size:cover;
-    background-attachment: fixed;
-    background-position:bottom;
-}
 
-.list-group {
-    background-color: white;
-    list-style: none;
+.footer {
+    margin: 30px;
 }

@@ -143,7 +143,12 @@ function stateSearch() {
 					responseContainerEl.innerHTML = '';
 
 					var flickrImg = document.createElement('img');
+					if(flickrImg && flickrImg.style) {
+						flickrImg.style.height = '250px';
+    					flickrImg.style.width = '250px';	
 					flickrImg.setAttribute('src', imageUrl);
+					
+					}
 
 					responseContainerEl.appendChild(flickrImg);
 
@@ -262,7 +267,12 @@ function citySearch() {
 						responseContainerEl.innerHTML = '';
 
 						var flickrImg = document.createElement('img');
+						if(flickrImg && flickrImg.style) {
+							flickrImg.style.height = '250px';
+							flickrImg.style.width = '250px';	
 						flickrImg.setAttribute('src', imageUrl);
+						
+						}
 
 						responseContainerEl.appendChild(flickrImg);
 					});
@@ -403,7 +413,11 @@ function locationSearch() {
 						responseContainerEl.innerHTML = '';
 
 						var flickrImg = document.createElement('img');
+						if(flickrImg && flickrImg.style) {
+							flickrImg.style.height = '250px';
+							flickrImg.style.width = '250px';	
 						flickrImg.setAttribute('src', imageUrl);
+						}
 
 						responseContainerEl.appendChild(flickrImg);
 					});

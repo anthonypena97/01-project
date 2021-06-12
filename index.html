@@ -15,7 +15,7 @@
 	<a class="navbar-brand" href="#">
 		<h1 >Trail Finder!</h1>
 	</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	<button class="navbar-toggler btn-outline-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNav">
@@ -24,7 +24,7 @@
 				<a class="nav-link" href="#find-hike">Find Hikes</a>
 			</li>
 			<li class="nav-item active">
-				<a class="nav-link" href="#my-to-do's">My To-Do List</a>
+				<a class="nav-link" href="#my-to-dos">My To-Do List</a>
 			</li>
 		</ul>
 	</div>
@@ -32,9 +32,9 @@
 
 <br>
 	<main class="main-content">
-		<div class="container px-lg-5 flex">
-			<div class="row">
-				<div class="col-sm">
+		<div class="container-fluid px-lg-5 flex">
+			<div class="row mx-auto justify-content-around px-lg-5 ">
+				<div class="col-sm-4">
 					<form class="card-header bg-info text-light">
 						<h2 class="text-color" id="find-hike">Find my Hike</h2>
 						<!-- search by state -->
@@ -125,13 +125,13 @@
 						</div>
 					</form>
 				</div>
-				<div class="col-sm">
-					<div id="image" class="figure-img img-fluid rounded" alt="...">
+				<div class="col-sm-4">
+					<div id="image" class="figure-img  rounded" alt="...">
 					</div>
 				</div>
-				<div class="col-sm">
+				<div class="col-sm-4">
 					<figure class="figure">
-						<div id="image" class="figure-img img-fluid rounded" alt="...">
+						<div id="image" class="figure-img  rounded" alt="...">
 						</div>
 						<p id="coordinates"></p>
 						<figcaption class="figure-caption text-right"></figcaption>
@@ -139,9 +139,10 @@
 				</div>
 			</div>
 		</div>
-		<section class="lists-section container">
-			<div class="row justify-content-between">
-				<div class="col-sm-5">
+		<br>
+		<section class="lists-section container-fluid ">
+			<div class="row justify-content-between px-lg-5 ">
+				<div class="col-md">
 					<h3 class="text-color card-header bg-info d-flex align-items-center">Search Results</h3>
 					<h4 id="stateName" style="color:orange;"></h4>
 					<ul id="result-list" style="list-style-type: none">
@@ -166,7 +167,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class=" col-sm-5" style="color:white;">
+				<div class=" col-md">
 					<h3 id="my-to-dos" class="text-color card-header bg-info d-flex align-items-center">Hikes To Do
 					</h3>
 					<p id="to-do-one"></p>
@@ -181,7 +182,7 @@
 	</main>
 
 
-	<footer>
+	<footer class="footer">
 		<div>
 			<a class="text-color" href="#">
 				<h2>Take a hike!</h2>
