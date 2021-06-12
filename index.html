@@ -11,9 +11,9 @@
 </head>
 
 <body>
-<nav class=" navbar navbar-expand-md bg-dark navbar-dark">
+<nav class=" navbar navbar-expand-md bg-info navbar-info">
 	<a class="navbar-brand" href="#">
-		<h1>Trail Finder!</h1>
+		<h1 >Trail Finder!</h1>
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -30,13 +30,13 @@
 	</div>
 </nav>
 
-
+<br>
 	<main class="main-content">
-		<div class="container flex">
+		<div class="container px-lg-5 flex">
 			<div class="row">
 				<div class="col-sm">
 					<form class="card-header bg-info text-light">
-						<h2 id="find-hike">Find my Hike</h2>
+						<h2 class="text-color" id="find-hike">Find my Hike</h2>
 						<!-- search by state -->
 						<div class="form-row">
 							<div id="state-list" class="form-group">
@@ -115,7 +115,7 @@
 						<!-- search by city -->
 						<div class="form-row">
 							<div class="form-group">
-								<input type="text" id="city-select" value="City...">
+								<input type="text" id="city-select" placeholder="City...">
 								<button onclick="citySearch()">Search by City</button>
 							</div>
 						</div>
@@ -142,39 +142,39 @@
 		<section class="lists-section container">
 			<div class="row justify-content-between">
 				<div class="col-sm-5">
-					<h3 class="card-header bg-info text-light d-flex align-items-center">Search Results</h3>
-					<h4 id="stateName" style="color:white;"></h4>
-					<ul id="result-list" style="list-style-type:none">
+					<h3 class="text-color card-header bg-info d-flex align-items-center">Search Results</h3>
+					<h4 id="stateName" style="color:orange;"></h4>
+					<ul id="result-list" style="list-style-type: none">
 						<li>
-							<a href=" javascript:void(0)" id="result-one" onclick="saveToDoOne()" style="color:white;"></a>
+							<a href=" javascript:void(0)" id="result-one" onclick="saveToDoOne()" style="color:orange;"></a>
 						</li>
 
 						<li>
-							<a href="javascript:void(0)" id="result-two" onclick="saveToDoTwo()" style="color:white;"></a>
+							<a href="javascript:void(0)" id="result-two" onclick="saveToDoTwo()" style="color:orange;"></a>
 						</li>
 
 						<li>
-							<a href="javascript:void(0)" id="result-three" onclick="saveToDoThree()" style="color:white;"></a>
+							<a href="javascript:void(0)" id="result-three" onclick="saveToDoThree()" style="color:orange;"></a>
 						</li>
 
 						<li>
-							<a href="javascript:void(0)" id="result-four" onclick="saveToDoFour()" style="color:white;"></a>
+							<a href="javascript:void(0)" id="result-four" onclick="saveToDoFour()" style="color:orange;"></a>
 						</li>
 
 						<li>
-							<a href="javascript:void(0)" id="result-five" onclick="saveToDoFive()" style="color:white;"></a>
+							<a href="javascript:void(0)" id="result-five" onclick="saveToDoFive()" style="color:orange;"></a>
 						</li>
 					</ul>
 				</div>
 				<div class=" col-sm-5" style="color:white;">
-					<h3 id="my-to-do's" class="card-header bg-info text-light d-flex align-items-center">Hikes To Do
+					<h3 id="my-to-dos" class="text-color card-header bg-info d-flex align-items-center">Hikes To Do
 					</h3>
 					<p id="to-do-one"></p>
 					<p id="to-do-two"></p>
 					<p id="to-do-three"></p>
 					<p id="to-do-four"></p>
 					<p id="to-do-five"></p>
-					<button onclick="clearSavedList()">Clear List</button>
+					<button class="text-color" onclick="clearSavedList()">Clear List</button>
 				</div>
 			</div>
 		</section>
@@ -183,7 +183,7 @@
 
 	<footer>
 		<div>
-			<a href="#">
+			<a class="text-color" href="#">
 				<h2>Take a hike!</h2>
 				<p>(back to top)</p>
 			</a>

@@ -1,5 +1,9 @@
 body {
     background-color: rgb(216, 247, 247);
+    background-image: url("../images/mountain landscape.jpg");
+    background-size:cover;
+    background-attachment: fixed;
+    background-position:top;
 }
 
 header {  
@@ -7,10 +11,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-image: url("../images/mountain landscape.jpg");
-    background-size:cover;
-    background-attachment: fixed;
-    background-position:bottom;
+    
 }
 
 header h1{
@@ -42,14 +43,39 @@ header nav ul li a {
     font-weight: bold;
     text-shadow: 10 10 15px rgba(0, 0, 0, 0.5); 
 }
+.navbar-toggler {
+    background-color: orange;
+}
 
+.navbar-toggler-icon {
+    color: blue;
+}
+
+.navbar-brand, .nav-link, .text-color {
+    color: orange;
+}
+
+#to-do-one, #to-do-two, #to-do-three, #to-do-four, #to-do-five, #result-one, #result-two, #result-three, #result-four, #result-five {
+    background-color: grey;
+    color: orange;
+}
+
+#result-list {
+    list-style: none;
+    
+}
+#stateName {
+    font-weight: bold;
+    text-decoration: underline;
+    background-color: grey;
+}
 main {
     flex: 1;
     display: flex;
     flex-wrap: wrap;
     
     background-image: url("../images/mountain landscape.jpg");
-    height: 100vh;
+    height: 150vh;
     background-size:cover;
     background-attachment: fixed;
     background-position:bottom;
