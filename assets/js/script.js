@@ -296,7 +296,7 @@ function locationSearch() {
 	// reset city text field
 
 	var cityTextField = document.getElementById("city-select");
-	cityTextField.value = "City...";
+	cityTextField.value = "";
 
 	var coordinatesContainer = document.getElementById("coordinates");
 
