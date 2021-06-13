@@ -9,6 +9,9 @@ body {
 main {
     margin: auto;
 }
+.row {
+    height: 300px;
+}
 .navbar-toggler {
     background-color: orange;
     border-color: black;

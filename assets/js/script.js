@@ -149,13 +149,8 @@ function stateSearch() {
 					flickrImg.setAttribute('src', imageUrl);
 					
 					}
-
 					responseContainerEl.appendChild(flickrImg);
-
-
-
 				});
-
 		})
 };
 
@@ -296,7 +291,7 @@ function locationSearch() {
 	// reset city text field
 
 	var cityTextField = document.getElementById("city-select");
-	cityTextField.value = "";
+	cityTextField.value = "City...";
 
 	var coordinatesContainer = document.getElementById("coordinates");
 

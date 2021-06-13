@@ -13,7 +13,7 @@
 <body>
 <nav class=" navbar navbar-expand-md bg-info navbar-info">
 	<a class="navbar-brand" href="#">
-		<h1 >Trail Finder!</h1>
+		<h1>Trail Finder!</h1>
 	</a>
 	<button class="navbar-toggler btn-outline-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
 <br>
 	<main class="main-content">
 		<div class="container-fluid flex">
-			<div class="row mx-auto justify-content-around px-lg-5 ">
+			<div class="row mx-auto justify-content-around px-lg-5">
 				<div class="col-md-4">
 					<form class="card-header bg-info text-light">
 						<h2 class="text-color" id="find-hike">Find my Hike</h2>
@@ -109,19 +109,19 @@
 									<option value="Saskatchewan">Saskatchewan</option>
 									<option value="Yukon Territory">Yukon Territory</option>
 								</select>
-								<button onclick="stateSearch()">Search by State</button>
+								<button type= "button" onclick="stateSearch()">Search by State</button>
 							</div>
 						</div>
 						<!-- search by city -->
 						<div class="form-row">
 							<div class="form-group">
 								<input type="text" id="city-select" placeholder="City...">
-								<button onclick="citySearch()">Search by City</button>
+								<button type="button" onclick="citySearch()">Search by City</button>
 							</div>
 						</div>
 						<!-- search by location -->
 						<div class="form-row">
-							<button onclick="locationSearch()">Search using my location</button>
+							<button  type="button" onclick="locationSearch()">Search using my location</button>
 						</div>
 					</form>
 				</div>
@@ -178,7 +178,7 @@
 					<li id="to-do-four"></li>
 					<li id="to-do-five"></li>
 					</ul>
-					<button class="text-color" onclick="clearSavedList()">Clear List</button>
+					<button  type="button" class="text-color" onclick="clearSavedList()">Clear List</button>
 				</div>
 			</div>
 		</section>
