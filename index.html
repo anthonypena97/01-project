@@ -11,26 +11,27 @@
 </head>
 
 <body>
-<nav class=" navbar navbar-expand-md bg-info navbar-info">
-	<a class="navbar-brand" href="#">
-		<h1>Trail Finder!</h1>
-	</a>
-	<button class="navbar-toggler btn-outline-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="navbarNav">
-		<ul class="navbar-nav mr-auto mt-2 mt-md-0">
-			<li class="nav-item active">
-				<a class="nav-link" href="#find-hike">Find Hikes</a>
-			</li>
-			<li class="nav-item active">
-				<a class="nav-link" href="#my-to-dos">My To-Do List</a>
-			</li>
-		</ul>
-	</div>
-</nav>
+	<nav class=" navbar navbar-expand-md bg-info navbar-info">
+		<a class="navbar-brand" href="#">
+			<h1>Trail Finder!</h1>
+		</a>
+		<button class="navbar-toggler btn-outline-dark" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto mt-2 mt-md-0">
+				<li class="nav-item active">
+					<a class="nav-link" href="#find-hike">Find Hikes</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#my-to-dos">My To-Do List</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
-<br>
+	<br>
 	<main class="main-content">
 		<div class="container-fluid flex">
 			<div class="row mx-auto justify-content-around px-lg-5">
@@ -109,19 +110,20 @@
 									<option value="Saskatchewan">Saskatchewan</option>
 									<option value="Yukon Territory">Yukon Territory</option>
 								</select>
-								<button type= "button" onclick="stateSearch()">Search by State</button>
+								<button type="button" onclick="stateSearch()">Search by State</button>
 							</div>
 						</div>
 						<!-- search by city -->
 						<div class="form-row">
 							<div class="form-group">
 								<input type="text" id="city-select" placeholder="City...">
+								<br>
 								<button type="button" onclick="citySearch()">Search by City</button>
 							</div>
 						</div>
 						<!-- search by location -->
 						<div class="form-row">
-							<button  type="button" onclick="locationSearch()">Search using my location</button>
+							<button type="button" onclick="locationSearch()">Search using my location</button>
 						</div>
 					</form>
 				</div>
@@ -131,8 +133,10 @@
 				</div>
 				<div class="col-md-4">
 					<figure class="figure">
-						<div id="image" class="figure-img  rounded" alt="...">
-						</div>
+						<iframe id="map" width="500" height="300" style="border:0" loading="lazy" allowfullscreen
+							src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDIFbqcgjYss0PbUYYGGjrFL1CbawBaJLM&q=Space+Needle,Seattle+WA">
+						</iframe>
+						<div id="image" class="figure-img  rounded" alt="..."></div>
 						<p id="coordinates"></p>
 						<figcaption class="figure-caption text-right"></figcaption>
 					</figure>
@@ -144,7 +148,7 @@
 			<div class="row justify-content-between mx-auto px-lg-5 ">
 				<div class="col-md">
 					<h3 class="text-color card-header bg-info d-flex align-items-center">Search Results</h3>
-					
+
 					<ul id="result-list" style="list-style-type: none">
 						<h4 id="stateName" style="color:orange;"></h4>
 						<li>
@@ -172,13 +176,13 @@
 					<h3 id="my-to-dos" class="text-color card-header bg-info d-flex align-items-center">Hikes To Do
 					</h3>
 					<ul class="my-to-dos">
-					<li id="to-do-one"></li>
-					<li id="to-do-two"></li>
-					<li id="to-do-three"></li>
-					<li id="to-do-four"></li>
-					<li id="to-do-five"></li>
+						<li id="to-do-one"></li>
+						<li id="to-do-two"></li>
+						<li id="to-do-three"></li>
+						<li id="to-do-four"></li>
+						<li id="to-do-five"></li>
 					</ul>
-					<button  type="button" class="text-color" onclick="clearSavedList()">Clear List</button>
+					<button type="button" class="text-color" onclick="clearSavedList()">Clear List</button>
 				</div>
 			</div>
 		</section>
@@ -194,14 +198,14 @@
 		</div>
 	</footer>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
 	<script src="./assets/js/script.js"></script>
 
 </body>

@@ -4,11 +4,13 @@ body {
     background-size:cover;
     background-attachment: fixed;
     background-position:top;
+    overscroll-behavior-y: none;
 }
 
 main {
     margin: auto;
 }
+
 .row {
     height: 300px;
 }
