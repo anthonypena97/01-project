@@ -143,14 +143,18 @@ function stateSearch() {
 					responseContainerEl.innerHTML = '';
 
 					var flickrImg = document.createElement('img');
-					flickrImg.setAttribute('src', imageUrl);
+					if (flickrImg && flickrImg.style) {
+						flickrImg.style.height = '250px';
+						flickrImg.style.width = '250px';
+						flickrImg.setAttribute('src', imageUrl);
 
+					}
 					responseContainerEl.appendChild(flickrImg);
 
-
+					var mapContainer = document.getElementById("map")
+					mapContainer.setAttribute('src', "https://www.google.com/maps/embed/v1/place?key=AIzaSyDIFbqcgjYss0PbUYYGGjrFL1CbawBaJLM&q=" + stateData)
 
 				});
-
 		})
 };
 
@@ -262,7 +266,12 @@ function citySearch() {
 						responseContainerEl.innerHTML = '';
 
 						var flickrImg = document.createElement('img');
-						flickrImg.setAttribute('src', imageUrl);
+						if (flickrImg && flickrImg.style) {
+							flickrImg.style.height = '250px';
+							flickrImg.style.width = '250px';
+							flickrImg.setAttribute('src', imageUrl);
+
+						}
 
 						responseContainerEl.appendChild(flickrImg);
 					});
@@ -271,6 +280,10 @@ function citySearch() {
 			else {
 				invalidResponse();
 			}
+
+			var mapContainer = document.getElementById("map")
+			mapContainer.setAttribute('src', "https://www.google.com/maps/embed/v1/place?key=AIzaSyDIFbqcgjYss0PbUYYGGjrFL1CbawBaJLM&q=" + stateData)
+
 		})
 };
 
@@ -403,9 +416,16 @@ function locationSearch() {
 						responseContainerEl.innerHTML = '';
 
 						var flickrImg = document.createElement('img');
-						flickrImg.setAttribute('src', imageUrl);
+						if (flickrImg && flickrImg.style) {
+							flickrImg.style.height = '250px';
+							flickrImg.style.width = '250px';
+							flickrImg.setAttribute('src', imageUrl);
+						}
 
 						responseContainerEl.appendChild(flickrImg);
+
+						var mapContainer = document.getElementById("map")
+						mapContainer.setAttribute('src', "https://www.google.com/maps/embed/v1/place?key=AIzaSyDIFbqcgjYss0PbUYYGGjrFL1CbawBaJLM&q=" + stateData)
 					});
 
 			})
