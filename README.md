@@ -1,9 +1,9 @@
 # Trail Finder
 
-#### Use client-side storage to store persistent data.![Trail Finder 2 0](https://user-images.githubusercontent.com/79285555/121843060-cb248780-cc9e-11eb-8782-a02c9a1aa3e2.png)
+#### ![Trail Finder 2 0](https://user-images.githubusercontent.com/79285555/121843060-cb248780-cc9e-11eb-8782-a02c9a1aa3e2.png)
 ###### Website 06/10/2021
 
-## live site - https://anthonypena97.github.io/01-project/
+## live site - https://anthonypena97.github.io/0trail-finder/
 
 ## Presentation
 ### https://docs.google.com/presentation/d/18NjLU_C_W3Be-7Xtx6Clr72G-P2esd4hXV05kk0QLuY/edit?usp=sharing
